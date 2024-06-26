@@ -12,11 +12,12 @@
   "license": "ISC",
   "dependencies": {
     "@types/express": "^4.17.21",
+    "eslint": "^9.5.0",
     "express": "^4.19.2",
     "nodemon": "^3.1.4",
     "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.5.2",
-    "yarn": "^1.22.22",
-    "tsconfig-paths": "^4.2.0"
+    "yarn": "^1.22.22"
   }
 }
