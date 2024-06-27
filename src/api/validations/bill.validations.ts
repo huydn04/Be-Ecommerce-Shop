@@ -1,4 +1,4 @@
-import enumStatus from "../../../src/"
+import {enumStatus} from "../../../src/contans/enum/bill/bill"
 
 export interface IBill {
   _id: string
