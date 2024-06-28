@@ -8,7 +8,10 @@ const config_services_1 = __importDefault(require("./config/server/config.servic
 const db_config_1 = __importDefault(require("./config/database/db.config"));
 const cors_1 = __importDefault(require("cors"));
 const body_parser_1 = __importDefault(require("body-parser"));
+const dotenv_1 = __importDefault(require("dotenv"));
 const app = (0, express_1.default)();
+dotenv_1.default.config();
+const port = config_services_1.default.PORT;
 app.use(cors_1.default);
 app.use(express_1.default.json());
 app.use(body_parser_1.default.json());
@@ -16,6 +19,9 @@ app.use(body_parser_1.default.json());
 app.get("/", async (req, res) => {
     res.send("hehehe");
 });
-app.listen(config_services_1.default.PORT, () => {
-    console.log(config_services_1.default.PORT);
+app.listen(port, () => {
+    console.log(port);
 });
+// app.listen(config.PORT, () => {
+//   console.log(config.PORT);
+// });
