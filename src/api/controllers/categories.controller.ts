@@ -6,7 +6,7 @@ import { Categories } from "../models/categories.services";
 const getAllCategories: RequestHandler = async (req, res) => {
   try {
     const categories = await Categories.find();
-    res.status(200).json(categories);
+    res.status(200).json({data:categories,status:200});
   } catch (error: any) {
     res.status(500).json({ message: error.message });
   }
@@ -18,7 +18,7 @@ const postCategories: RequestHandler = async (req, res) => {
   const newCategories = req.body;
   try {
     const result = await Categories.create(newCategories);
-    res.status(200).json(result);
+    res.status(200).json({data:result,status:200});
   } catch (error: any) {
     res.status(500).json({ message: error.message });
   }
@@ -58,7 +58,7 @@ const updateCategories: RequestHandler = async (req, res) => {
     if (!updatedItemsCategories) {
       res.status(404).json({ message: "Không tìm thấy items" });
     }
-    res.status(200).json(updatedItemsCategories);
+    res.status(200).json({data:updatedItemsCategories,status:200});
   } catch (error: any) {
     res.status(500).json({ message: error.message });
   }
@@ -73,7 +73,7 @@ const singleCategories: RequestHandler = async (req, res) => {
       res.status(404).json({ message: "Không tìm thấy id" });
     }
     const findCategoriesSingle = await Categories.findById(categoriesId);
-    res.status(200).json(findCategoriesSingle);
+    res.status(200).json({data:findCategoriesSingle,status:200});
   } catch (error: any) {
     res.status(500).json({ message: error.message });
   }

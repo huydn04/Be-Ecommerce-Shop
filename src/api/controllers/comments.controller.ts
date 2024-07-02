@@ -6,7 +6,7 @@ import { Comments } from "../models/comments.services";
 const getAllComments: RequestHandler = async (req, res) => {
   try {
     const comments = await Comments.find();
-    res.status(200).json(comments);
+    res.status(200).json({data:comments,status:200});
   } catch (error: any) {
     res.status(500).json({ message: error.message });
   }
@@ -18,7 +18,7 @@ const postComments: RequestHandler = async (req, res) => {
   const newComments = req.body;
   try {
     const result = await Comments.create(newComments);
-    res.status(200).json(result);
+    res.status(200).json({data:result,status:200});
   } catch (error: any) {
     res.status(500).json({ message: error.message });
   }
@@ -52,7 +52,7 @@ const updateComments: RequestHandler = async (req, res) => {
     if (!updatedItemsComments) {
       res.status(404).json({ message: "Không tìm thấy items" });
     }
-    res.status(200).json(updatedItemsComments);
+    res.status(200).json({data:updatedItemsComments,status:200});
   } catch (error: any) {
     res.status(500).json({ message: error.message });
   }
@@ -67,7 +67,7 @@ const singleComments: RequestHandler = async (req, res) => {
       res.status(404).json({ message: "Không tìm thấy id" });
     }
     const findCommentsIdSingle = await Comments.findById(commentsId);
-    res.status(200).json(findCommentsIdSingle);
+    res.status(200).json({data:findCommentsIdSingle,status:200});
   } catch (error: any) {
     res.status(500).json({ message: error.message });
   }
