@@ -6,7 +6,7 @@ import { BillDetails } from "../models/billDetails.services";
 const getBillDetails: RequestHandler = async (req, res) => {
   try {
     const billDetails = await BillDetails.find();
-    res.status(200).json(billDetails);
+    res.status(200).json({data:billDetails,status:200});
   } catch (error: any) {
     res.status(500).json({ message: error.message });
   }
@@ -18,7 +18,7 @@ const postBillDetails: RequestHandler = async (req, res) => {
   const newBillDetails = req.body;
   try {
     const result = await BillDetails.create(newBillDetails);
-    res.status(200).json(result);
+    res.status(200).json({data:result,status:200});
   } catch (error: any) {
     res.status(500).json({ message: error.message });
   }
@@ -59,7 +59,7 @@ const updateBillDetails: RequestHandler = async (req, res) => {
     if (!updatedItemsBillDetails) {
       res.status(404).json({ message: "Không tìm thấy items" });
     }
-    res.status(200).json(updatedItemsBillDetails);
+    res.status(200).json({data:updatedItemsBillDetails,status:200});
   } catch (error: any) {
     res.status(500).json({ message: error.message });
   }
@@ -74,7 +74,7 @@ const singleBillDetails: RequestHandler = async (req, res) => {
       res.status(404).json({ message: "Không tìm thấy id" });
     }
     const findBillDetailsSingle = await BillDetails.findById(billDetailsId);
-    res.status(200).json(findBillDetailsSingle);
+    res.status(200).json({data:findBillDetailsSingle,status:200});
   } catch (error: any) {
     res.status(500).json({ message: error.message });
   }

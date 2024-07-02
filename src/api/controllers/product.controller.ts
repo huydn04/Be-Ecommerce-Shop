@@ -6,7 +6,7 @@ import Product from '../models/product.services'
 const getAllProduct: RequestHandler = async (req, res) => {
   try {
     const product = await Product.find()
-    res.status(200).json(product)
+    res.status(200).json({data:product,status:200})
   } catch (error: any) {
     res.status(500).json({ message: error.message })
   }
@@ -18,7 +18,7 @@ const postProduct: RequestHandler = async (req, res) => {
   const newProduct = req.body
   try {
     const result = await Product.create(newProduct)
-    res.status(200).json(result)
+    res.status(200).json({data:result,status:200})
   } catch (error: any) {
     res.status(500).json({ message: error.message })
   }
@@ -59,7 +59,7 @@ const updateProduct: RequestHandler = async (req, res) => {
     if (!updatedItemsProduct) {
       res.status(404).json({ message: 'Không tìm thấy items' })
     }
-    res.status(200).json(updatedItemsProduct)
+    res.status(200).json({data:updatedItemsProduct,status:200})
   } catch (error: any) {
     res.status(500).json({ message: error.message })
   }
@@ -74,7 +74,7 @@ const singleProduct: RequestHandler = async (req, res) => {
       res.status(404).json({ message: 'Không tìm thấy id' })
     }
     const ProductSingle = await Product.findById(productId)
-    res.status(200).json(ProductSingle)
+    res.status(200).json({data:ProductSingle,status:200})
   } catch (error: any) {
     res.status(500).json({ message: error.message })
   }
