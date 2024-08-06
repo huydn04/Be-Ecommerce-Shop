@@ -34,7 +34,7 @@ app.use('/api/v1/comments', commentsRoutes)
 app.use('/api/v1/product', productRoutes)
 
 app.get("/", async (req, res) => {
-  res.send("hehehe");
+  res.send("đây là backend");
 });
 
 app.listen(port, () => {
